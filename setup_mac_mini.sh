@@ -23,12 +23,16 @@ if [ ! -f "$ENV_FILE" ]; then
     echo "🔑 [2/3] 請輸入你從 Telegram @BotFather 取得的 Bot Token："
     read -r -p "TELEGRAM_BOT_TOKEN: " BOT_TOKEN
     echo ""
+    echo "🧠 請輸入你的 Gemini API Key（免費申請：https://aistudio.google.com/apikey）："
+    read -r -p "GEMINI_API_KEY: " GEMINI_KEY
+    echo ""
     echo "🔒 預設綁定你的 Telegram User ID (8388219304)，直接按 Enter 即可："
     read -r -p "ALLOWED_USER_IDS [預設 8388219304]: " USER_ID
     USER_ID="${USER_ID:-8388219304}"
 
     cat > "$ENV_FILE" <<EOF
 TELEGRAM_BOT_TOKEN=$BOT_TOKEN
+GEMINI_API_KEY=$GEMINI_KEY
 ALLOWED_USER_IDS=$USER_ID
 EOF
     echo "✅ 已建立 .env 設定檔！"
