@@ -23,8 +23,9 @@ if [ ! -f "$ENV_FILE" ]; then
     echo "🔑 [2/3] 請輸入你從 Telegram @BotFather 取得的 Bot Token："
     read -r -p "TELEGRAM_BOT_TOKEN: " BOT_TOKEN
     echo ""
-    echo "（選填）如果你已經知道自己的 Telegram User ID 可直接輸入，否則直接按 Enter 跳過："
-    read -r -p "ALLOWED_USER_IDS: " USER_ID
+    echo "🔒 預設綁定你的 Telegram User ID (8388219304)，直接按 Enter 即可："
+    read -r -p "ALLOWED_USER_IDS [預設 8388219304]: " USER_ID
+    USER_ID="${USER_ID:-8388219304}"
 
     cat > "$ENV_FILE" <<EOF
 TELEGRAM_BOT_TOKEN=$BOT_TOKEN
