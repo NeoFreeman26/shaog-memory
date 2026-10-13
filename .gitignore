@@ -1,0 +1,13 @@
+# 敏感設定檔（絕對不要上傳 Token 到 GitHub）
+.env
+
+# Python 虛擬環境與快取
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# macOS 系統檔與日誌
+.DS_Store
+logs/
+*.log
