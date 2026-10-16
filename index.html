@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☀️ 小g (ShaoG) 跨裝置記憶庫與 24 小時 Telegram 助手</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --text-dark: #0f172a;
+            --code-bg: #1e293b;
+            --code-text: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        h1 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 1em 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            color: #b91c1c;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.95em;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 30px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* 響應式手機優化 */
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+                margin: 10px auto;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>☀️ 小g (ShaoG) 跨裝置記憶庫與 24 小時 Telegram 助手</h1>
+    <p>這個倉庫（<code>shaog-memory</code>）是<span class="highlight">小g</span>的長期記憶中心，用來同步你的 <span class="highlight">MacBook Air</span>、<span class="highlight">家裡的 Mac mini</span> 以及 <span class="highlight">iPhone (Telegram)</span>。</p>
+    
+    <hr>
+
+    <h2>📁 檔案說明</h2>
+    <ul>
+        <li><a href="./GEMINI.md"><code>GEMINI.md</code></a>：小g的<span class="highlight">長期記憶與規則檔</span>（所有裝置打開這個資料夾都會自動讀取）。</li>
+        <li><a href="./telegram_bot.py"><code>telegram_bot.py</code></a>：讓小g在 Mac mini 上 24 小時接聽 iPhone Telegram 訊息的橋接程式。</li>
+        <li><a href="./setup_mac_mini.sh"><code>setup_mac_mini.sh</code></a>：Mac mini 一鍵安裝與 24 小時背景自動啟動腳本。</li>
+        <li><a href="./.env.example"><code>.env.example</code></a>：Telegram Bot Token 設定檔範例（實際的 <code>.env</code> 已被 <code>.gitignore</code> 保護，不會上傳到 GitHub）。</li>
+    </ul>
+
+    <hr>
+
+    <h2>💻 一、MacBook Air 與 Mac mini 如何同步記憶？</h2>
+    
+    <h3>第一次在 Mac mini 下載小g的記憶：</h3>
+    <p>打開 Mac mini 的終端機（Terminal），輸入：</p>
+<pre><code>git clone https://github.com</code></pre>
+    <p>接著用 Antigravity 打開 <code>shaog-memory</code> 資料夾，裡面的 AI 就會自動讀取 <code>GEMINI.md</code>，知道自己叫<span class="highlight">小g</span>！</p>
+
+    <h3>日常同步記憶：</h3>
+    <ul>
+        <li><span class="highlight">上傳記憶到 GitHub</span>：直接跟小g說「<em>小g，幫我把記憶同步到 GitHub</em>」（或執行 <code>git add GEMINI.md && git commit -m "更新記憶" && git push</code>）。</li>
+        <li><span class="highlight">從 GitHub 下載最新記憶</span>：跟小g說「<em>小g，幫我從 GitHub 更新最新記憶</em>」（或執行 <code>git pull</code>）。</li>
+    </ul>
+
+    <hr>
+
+    <h2>📱 二、在 Mac mini 啟動 24 小時 Telegram 小g（讓 iPhone 隨時找得到）</h2>
+
+    <h3>步驟 1：在 Telegram 申請機器人 Token</h3>
+    <ol>
+        <li>用 iPhone 或電腦打開 Telegram，搜尋官方的 <code>@BotFather</code>。</li>
+        <li>傳送 <code>/newbot</code>，依提示幫機器人取名字（例如：<code>小g</code>）與帳號（例如：<code>freeman_shaog_bot</code>）。</li>
+        <li>複製 <code>@BotFather</code> 給你的 <span class="highlight">API Token</span>。</li>
+    </ol>
+
+    <h3>步驟 2：在 Mac mini 一鍵安裝並啟動 24 小時背景服務</h3>
+    <p>在 Mac mini 的終端機進入 <code>shaog-memory</code> 資料夾，執行安裝腳本：</p>
+<pre><code>cd shaog-memory
+bash setup_mac_mini.sh</code></pre>
+    <p>依照畫面提示貼上你的 <span class="highlight">Telegram Bot Token</span>，腳本就會自動：</p>
+    <ol>
+        <li>安裝所需 Python 套件（<code>google-antigravity</code>、<code>python-telegram-bot</code>）。</li>
+        <li>設定 macOS 背景服務（<code>launchd</code>），讓小g <span class="highlight">開機自動啟動、斷線自動重連、24 小時待命</span>！</li>
+    </ol>
+
+    <hr>
+
+    <h2>💬 三、在 iPhone Telegram 跟小g互動的專屬指令</h2>
+    <p>連上之後，你在 iPhone 上可以直接打字跟小g聊天，也可以使用以下快捷指令：</p>
+    <ul>
+        <li><code>/start</code>：喚醒小g並查看常用指令與你的 Telegram ID</li>
+        <li><code>/remember &lt;要記住的事&gt;</code>：直接從手機教小g新記憶（會自動寫入 <code>GEMINI.md</code> 並同步回 GitHub！）</li>
+        <li><code>/sync</code>：讓 Mac mini 上的小g立即與 GitHub 同步最新記憶</li>
+        <li><code>/reset</code>：開啟全新的對話視窗（並重新載入最新 <code>GEMINI.md</code>）</li>
+        <li><code>/id</code>：查詢你的 Telegram User ID（可填入 <code>.env</code> 的 <code>ALLOWED_USER_IDS</code> 鎖定只有你能使用）</li>
+    </ul>
+</div>
+
+</body>
+</html>
+
